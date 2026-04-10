@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Word 4 Grid Experiment</title>
   <style>
-    body {
-      min-height: 100dvh;
-      background-image:url('bg.png');
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 50px;
+    html, body {
+      height: 100%;
+      margin: 0;
     }
 
-    .container { text-align: center; }
+    body {
+      min-height: 100dvh;
+
+      background-image: url('bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      font-family: Arial, sans-serif;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .container img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+    }
+
+    .timer {
+      font-size: 24px;
+      margin: 20px 0;
+      color: #ccc;
+    }
 
     input {
       padding: 10px;
       font-size: 16px;
-      width: 200px;
+      width: 90%;
+      max-width: 300px;
+      box-sizing: border-box;
     }
 
     button {
@@ -31,39 +64,40 @@
 
     .words {
       color: #ccc;
-}
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
     .words ul {
-      color: #ccc;
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 10px 0 0 0;
 
       display: grid;
-      grid-auto-flow: column;
-      grid-template-rows: repeat(5, auto);
-      column-gap: 20px;
-      color: #ccc;
-}
-    .timer {
-      font-size: 24px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+
       color: #ccc;
     }
   </style>
 </head>
+
 <body>
 
-<div class="container">
-  <img src="4grid.PNG" style="width: 300px; height: auto;">
-  <div class="timer" id="timer">TIME</div>
+  <div class="container">
+    <img src="4grid.PNG" alt="game board">
 
-  <input type="text" id="wordInput" placeholder="Type a word">
-<br><br>
-  <div class="words">
-  <strong>Words:</strong>
-  <ul id="list"></ul>
-</div>
+    <div class="timer" id="timer">TIME</div>
 
+    <input type="text" id="wordInput" placeholder="Type a word">
+    <br><br>
+
+    <div class="words">
+      <strong>Words:</strong>
+      <ul id="list"></ul>
+    </div>
+  </div>
 <script>
 /* ================= TIMER ================= */
 let timeLeft = 120;
